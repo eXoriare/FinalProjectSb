@@ -1,2 +1,2 @@
 # FinalProjectSb
-Final project sberbank university, React, JS, Redux
+Final project sber university, React, JS, Redux
