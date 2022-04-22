@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { API_TOKEN } from '../constants';
+import { API_TOKEN } from '../redux/constants';
 
 
 export const axiosInstance = axios.create({

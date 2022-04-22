@@ -11,6 +11,7 @@ import SignIn from "./components/Auth/SignIn/SignIn";
 import { Box } from "@mui/material";
 import Footer from "./components/Footer/Footer";
 import { RequireAuth } from "./components/Auth/RequireAuth/RequireAuth";
+import SignUp from "./components/Auth/SignUp/SignUp";
 
 const themeLight = createTheme({
   palette: {
@@ -59,6 +60,9 @@ function App() {
                 }
               />
               <Route path="/signin" element={<SignIn />} />
+              <Route path="/signup" element={<SignUp />} />
+              {/* <Route path="/logout" element={<LogOut />} />
+              <Route path="/posts/:postId" element={<PostDetail />} /> */}
             </Routes>
           </Container>
           <Footer />

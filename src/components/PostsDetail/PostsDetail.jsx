@@ -36,9 +36,9 @@ export const PostDetail = () => {
   const {postId} = useParams()
   const detailPost = useSelector((store) => store.detailPost)
 
-  React.useEffect(() => {
-    dispatchEvent(getDetailPostQuery(postId))
-  }, [])
+  // React.useEffect(() => {
+  //   dispatchEvent(getDetailPostQuery(postId))
+  // }, [])
 
   if (!detailPost.title) return null
 

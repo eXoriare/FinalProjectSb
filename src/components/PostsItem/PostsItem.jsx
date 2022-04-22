@@ -43,9 +43,9 @@ export default function PostsItem({image, title, author, text, likes, _id}) {
   const navigate = useNavigate()
   const userId = useSelector((store) => store.person._id)
 
-  const deleteHandler = () => {
-    dispatch(deletePostQuery(_id))
-  }
+  // const deleteHandler = () => {
+  //   dispatch(deletePostQuery(_id))
+  // }
 
   const likePostHandler = () => {
     if (!likes.includes(userId)) {
