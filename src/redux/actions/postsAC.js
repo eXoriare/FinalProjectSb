@@ -24,11 +24,10 @@ export const addNewPost = (allPosts) => ({
 });
 
 export const queryNewPost = (post) => async (dispatch) => {
-  const bodyObject = JSON.parse(post);
 
-  const response = await axiosInstance.post("posts", bodyObject);
+  const response = await axiosInstance.post("posts", post);
 
-  const postFromApi = response.data();
+  const postFromApi = await response.data;
 
   dispatch(addNewPost(postFromApi));
 };

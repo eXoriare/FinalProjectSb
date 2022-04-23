@@ -1,14 +1,26 @@
-import { SIGN_IN } from '../types/personType'
+import { SIGN_IN, SIGN_OUT, SIGN_UP } from '../types/personType'
 
-export const personReducer = (state = {}, action) => {
+export const personReducer = (store = {}, action) => {
 	switch (action.type) {
 		case SIGN_IN:
 			return {
-				...state,
+				...store,
 				...action.payload
 			}
+
+		case SIGN_UP:
+    	return {
+      ...store,
+      ...action.payload,
+    	}
+
+    case SIGN_OUT:
+   		return {
+      ...store,
+      ...action.payload,
+		}
 	
 		default:
-			return state
+			return store
 	}
 }
