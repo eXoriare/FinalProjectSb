@@ -11,13 +11,16 @@ import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import { red } from '@mui/material/colors';
 import FavoriteIcon from '@mui/icons-material/Favorite';
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import ShareIcon from '@mui/icons-material/Share';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import Grid from '@mui/material/Grid';
+import {useState} from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 import { deleteLikePostQuery, setLikePostQuery } from '../../redux/actions/likesPostsAC';
+import { deletePostQuery } from '../../redux/actions/postsAC';
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -31,7 +34,7 @@ const ExpandMore = styled((props) => {
 }));
 
 export default function PostsItem({image, title, author, text, likes, _id}) {
-  const [expanded, setExpanded] = React.useState(false);
+  const [expanded, setExpanded] = useState(false);
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
@@ -40,14 +43,18 @@ export default function PostsItem({image, title, author, text, likes, _id}) {
   const description = text.length > 200 ? text.slice(0, 200) + '...' : text
 
   const dispatch = useDispatch()
-  const navigate = useNavigate()
+  // const navigate = useNavigate()
   const userId = useSelector((store) => store.person._id)
 
-  // const deleteHandler = () => {
-  //   dispatch(deletePostQuery(_id))
-  // }
+  const deleteHandler = () => {
+    dispatch(deletePostQuery(_id))
+  }
+
+  const setLike = likes.includes(userId)
 
   const likePostHandler = () => {
+    console.log('PI frm', {userId}, {likes})
+    console.log('PI frm2', !likes.includes(userId))
     if (!likes.includes(userId)) {
       dispatch(setLikePostQuery(_id))
     } else {
@@ -57,7 +64,6 @@ export default function PostsItem({image, title, author, text, likes, _id}) {
 
   return (
 		<Grid item direction='column' xs={6}>
-
 		
     <Card>
       <CardHeader
@@ -86,9 +92,11 @@ export default function PostsItem({image, title, author, text, likes, _id}) {
         </Typography>
       </CardContent>
       <CardActions disableSpacing>
-        <IconButton aria-label="add to favorites">
-          <FavoriteIcon />
+        <IconButton aria-label="add to favorites" onClick={likePostHandler}>
+        {setLike ? <FavoriteIcon /> : <FavoriteBorderIcon />}
+          <p>{likes.length}</p>
         </IconButton>
+        <IconButton aria-label="delete" onClick={deleteHandler}>Удалить</IconButton>
         <IconButton aria-label="share">
           <ShareIcon />
         </IconButton>

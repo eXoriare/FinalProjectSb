@@ -15,8 +15,9 @@ import ShareIcon from '@mui/icons-material/Share';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import Grid from '@mui/material/Grid';
+import {useState} from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate, useParams } from 'react-router-dom';
+import {  useParams } from 'react-router-dom';
 import { Button } from '@mui/material';
 
 const ExpandMore = styled((props) => {
@@ -31,13 +32,13 @@ const ExpandMore = styled((props) => {
 }));
 
 export const PostDetail = () => {
-  const [expanded, setExpanded] = React.useState(false);
+  const [expanded, setExpanded] = useState(false);
   const dispatch = useDispatch()
   const {postId} = useParams()
   const detailPost = useSelector((store) => store.detailPost)
 
   // React.useEffect(() => {
-  //   dispatchEvent(getDetailPostQuery(postId))
+    // dispatch(getDetailPostQuery(postId))
   // }, [])
 
   if (!detailPost.title) return null

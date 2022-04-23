@@ -24,8 +24,6 @@ const PostForm = () => {
 
     const body = JSON.stringify(preparedPostQuery);
 
-    console.log(body);
-
     dispatch(queryNewPost(body));
   };
 
@@ -113,7 +111,7 @@ const PostForm = () => {
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
             >
-              Send
+              Create Post
             </Button>
           </Box>
         </Box>

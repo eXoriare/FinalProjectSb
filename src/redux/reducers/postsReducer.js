@@ -1,4 +1,4 @@
-import {SET_ALL_POSTS, ADD_NEW_POST, DELETE_POST, LIKE_POST} from '../types/postsTypes'
+import {SET_ALL_POSTS, ADD_NEW_POST, DELETE_POST, LIKE_POST, UPDATE_POST, SET_POST} from '../types/postsTypes'
 
 const postsReducer = (store = [], action) => {
 
@@ -20,6 +20,18 @@ const postsReducer = (store = [], action) => {
 				if (post._id === action.payload._id) return action.payload
 				return post
 			})
+
+		case UPDATE_POST: 
+      return store.length
+        ? store.map((post) => {
+        if(post._id === action.payload._id) {
+          return action.payload
+          }
+        return post
+        }) : [action.payload]
+
+		case SET_POST:
+			return store.filter((post) => post._id === action.payload)
 
 		default:
 			return store

@@ -1,36 +1,30 @@
-import { API_TOKEN } from '../constants'
+import { axiosInstance } from '../../config/axios'
 import { LIKE_POST } from "../types/postsTypes"
 
 export const setLikePost = (_id) => ({
   type: LIKE_POST,
-  oayload: _id,
+  payload: _id,
 })
 
 export const setLikePostQuery = (_id) => async (dispatch) => {
-  const response =  await fetch(`https://api.react-learning.ru/posts/likes/${_id}`, {
-    method: 'PUT',
-    headers: {
-      authorization: `Bearer ${API_TOKEN}`,
-      'Content-Type': 'application/json',
-    }
-  })
-  const postsFromApi = await response.json()
-  dispatch(setLikePost(postsFromApi))
+  const response = await axiosInstance.put(
+    `posts/likes/${_id}`,
+  )
+  const likesFromApi = await response.data
+  console.log('1', likesFromApi, response)
+  dispatch(setLikePost(likesFromApi))
 }
 
-export const deleteLikePost = (postsFromApi) => ({
+export const deleteLikePost = (likesFromApi) => ({
   type: LIKE_POST,
-  payload: postsFromApi,
+  payload: likesFromApi,
 })
 
 export const deleteLikePostQuery = (_id) => async (dispatch) => {
-  const response = await fetch(`https://api.react-learning.ru/posts/likes/${_id}`, {
-    method: 'DELETE',
-    headers: {
-      authorization: `Bearer ${API_TOKEN}`,
-      'Content-Type': 'application/json',
-    }
-  })
-  const postsFromApi = await response.json()
-  dispatch(deleteLikePost(postsFromApi))
+    const response = await axiosInstance.delete(
+    `posts/likes/${_id}`,
+  )
+  const likesFromApi = await response.data
+  console.log('2', likesFromApi, response)
+  dispatch(deleteLikePost(likesFromApi))
 }
