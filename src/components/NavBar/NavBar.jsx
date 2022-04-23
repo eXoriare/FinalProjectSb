@@ -11,13 +11,14 @@ import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import LinkMUI from "@mui/material/Link";
 import { styled, alpha } from "@mui/material/styles";
 import InputBase from "@mui/material/InputBase";
 import SearchIcon from "@mui/icons-material/Search";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setSearchValue } from "../../redux/actions/searchAC";
+import { signOut } from "../../redux/actions/personAC";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -89,6 +90,8 @@ const settings = [
 ];
 
 const NavBar = () => {
+  const navigate = useNavigate()
+  const person = useSelector((store) => store.person)
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
@@ -112,6 +115,12 @@ const NavBar = () => {
   const searchHandler = (e) => {
     dispatch(setSearchValue(e.target.value.trim()));
   };
+
+  const signOutHandler = () => {
+    dispatch(signOut(person))
+    localStorage.clear()
+    navigate('/signin')
+  }
 
   return (
     <AppBar position="static">
@@ -222,7 +231,7 @@ const NavBar = () => {
             >
               {settings.map((setting) => (
                 <LinkMUI color="inherit" underline="none" key={setting.title} component={Link} to={setting.path}>
-                  <MenuItem onClick={handleCloseNavMenu}>
+                  <MenuItem onClick={signOutHandler}>
                     <Typography textAlign="center">{setting.title}</Typography>
                   </MenuItem>
                 </LinkMUI>
