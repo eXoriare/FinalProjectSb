@@ -28,10 +28,11 @@ export const queryNewPost = (post) => async (dispatch) => {
   const response = await axiosInstance.post("posts", post);
 
     if (response.status === 201) {
+      console.log('postsAC', '201', {response})
     const postFromApi = await response.data;
     dispatch(addNewPost(postFromApi));
     } else {
-      alert('Что-то пошло не так...')
+      alert(response.message)
     }
 };
 
@@ -46,7 +47,7 @@ export const deletePostQuery = (_id) => async (dispatch) => {
 
   if (response.status === 200) {
     dispatch(deletePost(_id))
-  }else {
+  } else {
     window.alert('Вы пытаетесь удалить чужой пост')
   }
 }

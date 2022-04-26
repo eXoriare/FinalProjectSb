@@ -14,7 +14,7 @@ const PostForm = () => {
 
   const dispatch = useDispatch();
 
-  const submitHandler = async (e) => {
+  const submitHandler = (e) => {
     e.preventDefault()
     const preparedPostQuery = {
       title,
