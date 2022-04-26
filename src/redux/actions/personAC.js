@@ -1,6 +1,8 @@
 import SignUp from "../../components/Auth/SignUp/SignUp";
 import { axiosInstance } from "../../config/axios";
 import { SIGN_IN, SIGN_OUT, SIGN_UP } from "../types/personType";
+import { Navigate, useLocation } from "react-router-dom";
+
 
 const token = 'token'
 
@@ -27,6 +29,9 @@ export const signInQuery =
     );
 
     typeof cb === 'function' && cb();
+
+    let location = useLocation()
+    return <Navigate to="/postform" state={{ from: location }} replace />;
   };
 
   export const signUp = (person) => ({
@@ -49,19 +54,19 @@ export const signInQuery =
           ...person.data
         })
       );
-      const responseSignUp = await axiosInstance.post('signUp', {
+      const responseSignIn = await axiosInstance.post('signIn', {
         email: person.email,
         password,
       })
-      const userSignUp = responseSignUp.data
+      const userSignIn = responseSignIn.data
       dispatch(
         SignUp({
-          ...userSignUp.data,
-          token: userSignUp.token,
+          ...userSignIn.data,
+          token: userSignIn.token,
         }),
       )
       typeof cb === 'function' && cb()
-      localStorage.setItem(token, userSignUp.token)
+      localStorage.setItem(token, userSignIn.token)
     };
 
 export const signOut = (person) => ({

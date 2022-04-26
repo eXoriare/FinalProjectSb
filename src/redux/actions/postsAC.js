@@ -28,11 +28,10 @@ export const queryNewPost = (post) => async (dispatch) => {
   const response = await axiosInstance.post("posts", post);
 
     if (response.status === 201) {
-      console.log('postsAC', '201', {response})
     const postFromApi = await response.data;
     dispatch(addNewPost(postFromApi));
     } else {
-      alert(response.message)
+      alert(response.data.message)
     }
 };
 
