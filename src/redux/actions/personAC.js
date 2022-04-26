@@ -1,3 +1,4 @@
+import SignUp from "../../components/Auth/SignUp/SignUp";
 import { axiosInstance } from "../../config/axios";
 import { SIGN_IN, SIGN_OUT, SIGN_UP } from "../types/personType";
 
@@ -48,19 +49,19 @@ export const signInQuery =
           ...person.data
         })
       );
-      const responseSignIn = await axiosInstance.post('signin', {
+      const responseSignUp = await axiosInstance.post('signUp', {
         email: person.email,
         password,
       })
-      const userSignIn = responseSignIn.data
+      const userSignUp = responseSignUp.data
       dispatch(
-        signIn({
-          ...userSignIn.data,
-          token: userSignIn.token,
+        SignUp({
+          ...userSignUp.data,
+          token: userSignUp.token,
         }),
       )
       typeof cb === 'function' && cb()
-      localStorage.setItem(token, userSignIn.token)
+      localStorage.setItem(token, userSignUp.token)
     };
 
 export const signOut = (person) => ({

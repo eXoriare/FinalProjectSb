@@ -61,8 +61,8 @@ function App() {
               />
               <Route path="/signin" element={<SignIn />} />
               <Route path="/signup" element={<SignUp />} />
-              {/* <Route path="/logout" element={<LogOut />} />
-              <Route path="/posts/:postId" element={<PostDetail />} /> */}
+              <Route path="/logout" element={<Main />} />
+              {/* <Route path="/posts/:postId" element={<PostDetail />} /> */}
             </Routes>
           </Container>
           <Footer />

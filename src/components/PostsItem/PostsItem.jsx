@@ -58,6 +58,7 @@ export default function PostsItem({image, title, author, text, likes, _id}) {
     if (!likes.includes(userId)) {
       dispatch(setLikePostQuery(_id))
     } else {
+      console.log('PI frm else')
       dispatch(deleteLikePostQuery(_id))
     }
     }
@@ -93,7 +94,7 @@ export default function PostsItem({image, title, author, text, likes, _id}) {
       </CardContent>
       <CardActions disableSpacing>
         <IconButton aria-label="add to favorites" onClick={likePostHandler}>
-        {setLike ? <FavoriteIcon /> : <FavoriteBorderIcon />}
+        {setLike ? <FavoriteIcon style={{ fill: '#F44336' }} /> : <FavoriteBorderIcon style={{ fill: '#F44336' }} />}
           <p>{likes.length}</p>
         </IconButton>
         <IconButton aria-label="delete" onClick={deleteHandler}>Удалить</IconButton>

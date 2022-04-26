@@ -1,6 +1,5 @@
 import { axiosInstance } from "../../config/axios";
 import { SIGN_UP } from "../types/personType";
-import { signInQuery } from "./personAC";
 
 export const signUp = (person) => ({
   type: SIGN_UP,
@@ -18,7 +17,7 @@ export const signUpQuery =
 
     if (response.status === 201) {
       dispatch(
-      signInQuery({email, password, cb: successCb})
+      signUpQuery({email, password, cb: successCb})
       )
     }
       
