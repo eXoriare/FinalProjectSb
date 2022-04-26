@@ -11,7 +11,6 @@ export const setLikePostQuery = (_id) => async (dispatch) => {
     `posts/likes/${_id}`,
   )
   const likesFromApi = await response.data
-  console.log('1', likesFromApi, response)
   dispatch(setLikePost(likesFromApi))
 }
 
@@ -25,6 +24,5 @@ export const deleteLikePostQuery = (_id) => async (dispatch) => {
     `posts/likes/${_id}`,
   )
   const likesFromApi = await response.data
-  console.log('2', likesFromApi, response)
   dispatch(deleteLikePost(likesFromApi))
 }

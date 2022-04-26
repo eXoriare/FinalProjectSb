@@ -14,7 +14,8 @@ const PostForm = () => {
 
   const dispatch = useDispatch();
 
-  const submitHandler = () => {
+  const submitHandler = async (e) => {
+    e.preventDefault()
     const preparedPostQuery = {
       title,
       text,
@@ -22,8 +23,12 @@ const PostForm = () => {
       tags: tags.split(",").map((el) => el.trim()),
     };
 
-    const body = JSON.stringify(preparedPostQuery);
+  const body = preparedPostQuery
 
+    setTitle('')
+    setText('')
+    setImage('')
+    setTags('')
     dispatch(queryNewPost(body));
   };
 

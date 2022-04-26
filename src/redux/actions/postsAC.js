@@ -27,9 +27,12 @@ export const queryNewPost = (post) => async (dispatch) => {
 
   const response = await axiosInstance.post("posts", post);
 
-  const postFromApi = await response.data;
-
-  dispatch(addNewPost(postFromApi));
+    if (response.status === 201) {
+    const postFromApi = await response.data;
+    dispatch(addNewPost(postFromApi));
+    } else {
+      alert('Что-то пошло не так...')
+    }
 };
 
 const deletePost = (_id) => ({

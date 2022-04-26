@@ -53,12 +53,9 @@ export default function PostsItem({image, title, author, text, likes, _id}) {
   const setLike = likes.includes(userId)
 
   const likePostHandler = () => {
-    console.log('PI frm', {userId}, {likes})
-    console.log('PI frm2', !likes.includes(userId))
     if (!likes.includes(userId)) {
       dispatch(setLikePostQuery(_id))
     } else {
-      console.log('PI frm else')
       dispatch(deleteLikePostQuery(_id))
     }
     }
