@@ -13,6 +13,5 @@ export function RequireAuth({ children }) {
     // than dropping them off on the home page.
     return <Navigate to="/signin" state={{ from: location }} replace />;
   }
-
   return children;
 }

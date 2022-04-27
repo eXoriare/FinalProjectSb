@@ -58,7 +58,7 @@ const PostForm = () => {
             <AddCircleOutlineIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
-            Create Post
+            Создайте свой пост
           </Typography>
           <Box
             component="form"
@@ -116,7 +116,7 @@ const PostForm = () => {
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
             >
-              Create Post
+              Отправить пост
             </Button>
           </Box>
         </Box>

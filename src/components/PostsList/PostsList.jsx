@@ -4,22 +4,18 @@ import { loadAllPosts } from "../../redux/actions/postsAC";
 import PostsItem from "../PostsItem/PostsItem";
 import Grid from "@mui/material/Grid";
 import { useDebounce } from "../../hooks/useDebounce";
-import { useThrottle } from "../../hooks/useThrottle";
 
 const PostsList = () => {
   const dispatch = useDispatch();
 
   const posts = useSelector((store) => store.posts);
-
   const search = useSelector((store) => store.search)
 
-  // const debouncedSearch = useDebounce(search, 500)
-  const debouncedSearch = useThrottle(search, 500)
+  const debouncedSearch = useDebounce(search, 500)
 
   useEffect(() => {
     dispatch(loadAllPosts(debouncedSearch)); 
   }, [debouncedSearch, dispatch])
-
 
   if (!posts.length) return <div>Posts list is empty</div>;
 

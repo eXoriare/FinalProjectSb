@@ -1,4 +1,7 @@
 import * as React from 'react';
+import {useState} from 'react'
+import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from 'react-redux';
 import { styled } from '@mui/material/styles';
 import Card from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
@@ -12,15 +15,14 @@ import Typography from '@mui/material/Typography';
 import { red } from '@mui/material/colors';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
-import ShareIcon from '@mui/icons-material/Share';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import Grid from '@mui/material/Grid';
-import {useState} from 'react'
-import { useDispatch, useSelector } from 'react-redux';
-// import { useNavigate } from 'react-router-dom';
 import { deleteLikePostQuery, setLikePostQuery } from '../../redux/actions/likesPostsAC';
 import { deletePostQuery } from '../../redux/actions/postsAC';
+import { Button, Stack } from '@mui/material';
+import LinkMUI from '@mui/material/Link'
+import Delete from '@mui/icons-material/Delete';
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -33,22 +35,27 @@ const ExpandMore = styled((props) => {
   }),
 }));
 
-export default function PostsItem({image, title, author, text, likes, _id}) {
+export default function PostsItem({image, title, author, text, likes, _id, created_at}) {
   const [expanded, setExpanded] = useState(false);
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
 
+  const date = new Date(created_at).toLocaleString()
+
   const description = text.length > 200 ? text.slice(0, 200) + '...' : text
 
   const dispatch = useDispatch()
-  // const navigate = useNavigate()
   const userId = useSelector((store) => store.person._id)
 
   const deleteHandler = () => {
     dispatch(deletePostQuery(_id))
   }
+
+  // const detailHandler = () => {
+  //   alert('тут что-то будет')
+  // }
 
   const setLike = likes.includes(userId)
 
@@ -58,7 +65,7 @@ export default function PostsItem({image, title, author, text, likes, _id}) {
     } else {
       dispatch(deleteLikePostQuery(_id))
     }
-    }
+  }
 
   return (
 		<Grid item direction='column' xs={6}>
@@ -76,7 +83,7 @@ export default function PostsItem({image, title, author, text, likes, _id}) {
           </IconButton>
         }
         title={title}
-        subheader="September 14, 2016"
+        subheader={date}
       />
       <CardMedia
         component="img"
@@ -90,14 +97,33 @@ export default function PostsItem({image, title, author, text, likes, _id}) {
         </Typography>
       </CardContent>
       <CardActions disableSpacing>
-        <IconButton aria-label="add to favorites" onClick={likePostHandler}>
-        {setLike ? <FavoriteIcon style={{ fill: '#F44336' }} /> : <FavoriteBorderIcon style={{ fill: '#F44336' }} />}
+        
+        <IconButton 
+          aria-label="add to favorites"
+          onClick={likePostHandler}>
+          {setLike ? <FavoriteIcon style={{ fill: '#F44336' }} /> : <FavoriteBorderIcon style={{ fill: '#F44336' }} />}
           <p>{likes.length}</p>
         </IconButton>
-        <IconButton aria-label="delete" onClick={deleteHandler}>Удалить</IconButton>
-        <IconButton aria-label="share">
-          <ShareIcon />
-        </IconButton>
+        
+        <Stack direction="row" spacing={2}>
+            <Button 
+            aria-label="delete"
+            onClick={deleteHandler} 
+            variant="contained" 
+            color="error">
+              <Delete />
+          </Button>
+            
+          <LinkMUI component={Link} to={`/posts/${_id}`}>
+            <Button 
+              type="submit"
+              fullWidth
+              variant="contained">
+              Детали
+            </Button>
+          </LinkMUI>
+        </Stack>
+
         <ExpandMore
           expand={expanded}
           onClick={handleExpandClick}

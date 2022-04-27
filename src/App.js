@@ -12,6 +12,7 @@ import { Box } from "@mui/material";
 import Footer from "./components/Footer/Footer";
 import { RequireAuth } from "./components/Auth/RequireAuth/RequireAuth";
 import SignUp from "./components/Auth/SignUp/SignUp";
+import PostDetail from "./components/PostDetail/PostDetail";
 
 const themeLight = createTheme({
   palette: {
@@ -20,8 +21,6 @@ const themeLight = createTheme({
     },
   },
 });
-
-// Two long comment
 
 function App() {
   return (
@@ -42,12 +41,22 @@ function App() {
             className="container"
           >
             <Routes>
-              <Route path="/" element={<Main />} />
+              <Route path="/"
+              element={<Main />} 
+              />
               <Route
                 path="/posts"
                 element={
                   <RequireAuth>
                     <PostsList />
+                  </RequireAuth>
+                }
+              />
+              <Route
+                path="/posts/:_id"
+                element={
+                  <RequireAuth>
+                    <PostDetail />
                   </RequireAuth>
                 }
               />
@@ -62,7 +71,6 @@ function App() {
               <Route path="/signin" element={<SignIn />} />
               <Route path="/signup" element={<SignUp />} />
               <Route path="/logout" element={<Main />} />
-              {/* <Route path="/posts/:postId" element={<PostDetail />} /> */}
             </Routes>
           </Container>
           <Footer />

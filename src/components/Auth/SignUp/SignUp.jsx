@@ -59,7 +59,7 @@ export default function SignUp() {
             <LockOutlinedIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
-            Sign Up
+            Регистрация
           </Typography>
           <Box
             component="form"
@@ -93,7 +93,7 @@ export default function SignUp() {
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
             >
-              Sign Up
+              Зарегистрироваться
             </Button>
           </Box>
         </Box>

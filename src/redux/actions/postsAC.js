@@ -1,5 +1,5 @@
 import { axiosInstance } from "../../config/axios";
-import { ADD_NEW_POST, DELETE_POST, SET_ALL_POSTS } from "../types/postsTypes";
+import { ADD_NEW_POST, DELETE_POST, SET_ALL_POSTS, UPDATE_POST } from "../types/postsTypes";
 
 export const setAllPosts = (allPosts) => ({
   type: SET_ALL_POSTS,
@@ -43,10 +43,25 @@ const deletePost = (_id) => ({
 export const deletePostQuery = (_id) => async (dispatch) => {
   const response = await axiosInstance.delete(`posts/${_id}`, 
 )
-
   if (response.status === 200) {
     dispatch(deletePost(_id))
-  } else {
-    window.alert('Вы пытаетесь удалить чужой пост')
-  }
+    alert('Вы удалили свой пост')
+  } 
+}
+
+const updatePost = (newPostData) => ({
+  type: UPDATE_POST, 
+  payload: newPostData,
+})
+
+export const updatePostQuery = (_id, formData, closeModal) => async (dispatch) => {
+const response = await axiosInstance.patch(`posts/${_id}`,
+formData
+)
+
+  if (response.status === 200) {
+  const updatedPostFromServer = await response.data
+  dispatch(updatePost(updatedPostFromServer))
+  closeModal()
+  } 
 }

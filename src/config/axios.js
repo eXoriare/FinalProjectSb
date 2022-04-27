@@ -18,3 +18,9 @@ axiosInstance.interceptors.response.use(
   return response
   },
 )
+
+axiosInstance.interceptors.response.use(
+  response => response,
+  error => {
+    alert(error.response.data.message)
+  });

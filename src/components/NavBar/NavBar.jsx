@@ -50,7 +50,6 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   color: "inherit",
   "& .MuiInputBase-input": {
     padding: theme.spacing(1, 1, 1, 0),
-    // vertical padding + font size from searchIcon
     paddingLeft: `calc(1em + ${theme.spacing(4)})`,
     transition: theme.transitions.create("width"),
     width: "100%",
@@ -62,29 +61,29 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 
 const pages = [
   {
-    title: "Main",
+    title: "На главную",
     path: "/",
   },
   {
-    title: "Posts",
+    title: "Посты",
     path: "/posts"
   },
   {
-    title: "Create New Post",
+    title: "Создать новый пост",
     path: "/postform",
   },
 ];
 const settings = [
   {
-    title: "Sign In",
+    title: "Войти",
     path: "/signin",
   },
   {
-    title: "Sign Up",
+    title: "Регистрация",
     path: "/signup",
   },
   {
-    title: "Logout",
+    title: "Выйти",
     path: "/logout",
   },
 ];
@@ -132,7 +131,7 @@ const NavBar = () => {
             component="div"
             sx={{ mr: 2, display: { xs: "none", md: "flex" } }}
           >
-            FINAL PROJECT
+            FINAL PROJECT TEAM #6
           </Typography>
 
          
@@ -200,7 +199,7 @@ const NavBar = () => {
               <SearchIcon />
             </SearchIconWrapper>
             <StyledInputBase
-              placeholder="Search…"
+              placeholder="Найти пост..."
               inputProps={{ "aria-label": "search" }}
               onChange={searchHandler}
             />
@@ -208,9 +207,9 @@ const NavBar = () => {
 
 
           <Box sx={{ flexGrow: 0 }}>
-            <Tooltip title="Open settings">
+            <Tooltip title="Действия с аккаунтом">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                <Avatar alt="Remy Sharp" src="https://bipbap.ru/wp-content/uploads/2019/06/01.-kartinki-dlya-ld-640x369.jpg" />
               </IconButton>
             </Tooltip>
             <Menu
