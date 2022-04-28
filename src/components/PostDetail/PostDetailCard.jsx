@@ -75,6 +75,7 @@ const PostDetailCard = () => {
                 Редактировать
          </Button>
       </Grid>
+      {post.tags}
       <hr />
       <Comments />
     </Card>

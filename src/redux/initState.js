@@ -8,6 +8,7 @@ const initState = () => {
 		person: {},
 		likes: [],
 		comments: [],
+		comment: [],
 	}
 }
 

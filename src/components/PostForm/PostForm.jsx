@@ -116,7 +116,7 @@ const PostForm = () => {
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
             >
-              Отправить пост
+              Создать пост
             </Button>
           </Box>
         </Box>

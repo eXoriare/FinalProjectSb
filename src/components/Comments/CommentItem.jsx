@@ -7,13 +7,13 @@ import ListItemText from '@mui/material/ListItemText';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
 import Avatar from '@mui/material/Avatar';
 import { deleteCommentQuery } from '../../redux/actions/commentsAC';
-import { Button } from '@mui/material';
-import Delete from '@mui/icons-material/Delete';
+import DeleteIcon from '@mui/icons-material/Delete';
+import { IconButton, Typography } from '@mui/material';
 
 export default function CommentItem({_id}) {
     const dispatch = useDispatch()
     const postId = useParams()
-    const comments = useSelector((store) => store.comments)
+    const comments = useSelector((store) => store.comment)
     const currentComment = comments.find((comment) => comment._id === _id)
   const deleteHandler = () => dispatch(deleteCommentQuery(postId._id, currentComment._id))
   
@@ -21,21 +21,32 @@ export default function CommentItem({_id}) {
     <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
       <ListItem alignItems="flex-start">
         <ListItemAvatar>
-          <Avatar>
-          {currentComment.author?.name.slice(0, 1)}
-          </Avatar>
+          <Avatar alt="avatar" src="/static/images/avatar/1.jpg" />
         </ListItemAvatar>
-        <ListItemText primary={currentComment.author?.name}/>
-      </ListItem>
-      <ListItem >
-        <div> {currentComment.text} </div>
-        <Button 
-          aria-label="delete" 
-          onClick={deleteHandler} 
-          variant="contained" 
-          color="error">
-          <Delete />
-        </Button>
+        <ListItemText
+          primary={currentComment.text}
+          secondary={
+            <React.Fragment>
+              <Typography
+                sx={{ display: 'inline' }}
+                component="span"
+                variant="body2"
+                color="text.primary"
+              >
+                {currentComment.author?.name.slice(0, 1)} 
+              </Typography>
+              <IconButton 
+              aria-label="delete" 
+              // color="primary"
+              variant="contained"
+              style={{ fill: '#F44336' }}
+              onClick={deleteHandler} 
+              >
+                <DeleteIcon />
+              </IconButton>
+            </React.Fragment>
+          }
+        />
       </ListItem>
     </List>
   );

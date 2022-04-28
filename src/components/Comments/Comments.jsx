@@ -14,7 +14,7 @@ const Comments = () => {
     const postId = useParams()
     const dispatch = useDispatch();
 
-  const comments = useSelector((store) => store.comments);
+  const comments = useSelector((store) => store.comment);
   useEffect(() => {
     dispatch(loadAllComments(postId._id)); 
   }, [dispatch, commentForm, postId._id])
@@ -64,7 +64,7 @@ const Comments = () => {
           variant="contained"
           sx={{ mt: 0, mb: 0 }}
           onClick={submitHandler}>
-          Ваш комментарий
+          Оставить комментарий
         </Button>
       </Grid>
     </Grid>

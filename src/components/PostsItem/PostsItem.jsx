@@ -20,9 +20,10 @@ import MoreVertIcon from '@mui/icons-material/MoreVert';
 import Grid from '@mui/material/Grid';
 import { deleteLikePostQuery, setLikePostQuery } from '../../redux/actions/likesPostsAC';
 import { deletePostQuery } from '../../redux/actions/postsAC';
-import { Button, Stack } from '@mui/material';
+import { Badge, Button, Stack } from '@mui/material';
 import LinkMUI from '@mui/material/Link'
 import Delete from '@mui/icons-material/Delete';
+import MailIcon from '@mui/icons-material/Mail';
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -35,7 +36,7 @@ const ExpandMore = styled((props) => {
   }),
 }));
 
-export default function PostsItem({image, title, author, text, likes, _id, created_at}) {
+export default function PostsItem({image, title, author, text, likes, _id, tags, comments, created_at}) {
   const [expanded, setExpanded] = useState(false);
 
   const handleExpandClick = () => {
@@ -120,6 +121,10 @@ export default function PostsItem({image, title, author, text, likes, _id, creat
           </LinkMUI>
         </Stack>
 
+        <Badge badgeContent={comments?.length} color="primary">
+          <MailIcon color="action" />
+        </Badge>
+
         <ExpandMore
           expand={expanded}
           onClick={handleExpandClick}
@@ -134,6 +139,8 @@ export default function PostsItem({image, title, author, text, likes, _id, creat
 
           <Typography paragraph>
 						{text}
+            <hr />
+            tags: {tags}
           </Typography>
          
         </CardContent>

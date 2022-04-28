@@ -5,12 +5,12 @@ const personToken = 'personToken'
 
 export function RequireAuth({ children }) {
   let token = useSelector(store => store.person.token);
-  const location = useLocation();
 
   if (!token) {
     token = localStorage.getItem(personToken)
   }
 
+  const location = useLocation();
 
   if (!token) {
     // Redirect them to the /login page, but save the current location they were
