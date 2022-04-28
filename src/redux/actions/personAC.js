@@ -1,7 +1,5 @@
-// import SignUp from "../../components/Auth/SignUp/SignUp";
 import { axiosInstance } from "../../config/axios";
 import { SIGN_IN, SIGN_OUT, SIGN_UP } from "../types/personType";
-// import { Navigate, useLocation } from "react-router-dom";
 
 export const signIn = (person) => ({
   type: SIGN_IN,

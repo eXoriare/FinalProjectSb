@@ -7,7 +7,6 @@ const initState = () => {
 		search: '',
 		person: {},
 		likes: [],
-		// detailPost: {},
 		comments: [],
 	}
 }

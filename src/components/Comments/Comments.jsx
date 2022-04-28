@@ -28,8 +28,6 @@ const Comments = () => {
         setCommentForm('')
   }
 
-  // if (!comments?.length) return <div>Comments list is empty</div>;
-
     return (
   <Box sx={{
     display: 'flex',

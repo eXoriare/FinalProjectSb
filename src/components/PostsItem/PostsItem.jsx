@@ -53,10 +53,6 @@ export default function PostsItem({image, title, author, text, likes, _id, creat
     dispatch(deletePostQuery(_id))
   }
 
-  // const detailHandler = () => {
-  //   alert('тут что-то будет')
-  // }
-
   const setLike = likes.includes(userId)
 
   const likePostHandler = () => {
