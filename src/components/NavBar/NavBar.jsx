@@ -131,7 +131,7 @@ const NavBar = () => {
             component="div"
             sx={{ mr: 2, display: { xs: "none", md: "flex" } }}
           >
-            FINAL PROJECT TEAM #6
+            CULTURENET
           </Typography>
 
          
