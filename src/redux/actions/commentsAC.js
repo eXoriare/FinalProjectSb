@@ -1,8 +1,6 @@
 import { axiosInstance } from "../../config/axios";
 import { ADD_COMMENT, DELETE_COMMENT, SET_COMMENTS } from "../types/commentTypes";
 
-
-
 export const setAllComments = (allComments) => ({
 	type: SET_COMMENTS,
 	payload: allComments

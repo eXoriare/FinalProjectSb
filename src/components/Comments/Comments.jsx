@@ -1,4 +1,5 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { TextField } from "@mui/material";
@@ -16,17 +17,19 @@ const Comments = () => {
   const comments = useSelector((store) => store.comments);
   useEffect(() => {
     dispatch(loadAllComments(postId._id)); 
-  }, [dispatch, commentForm])
+  }, [dispatch, commentForm, postId._id])
   const submitHandler = () => {
     const preparedPostQuery = {
         text: commentForm,
-      };
+    };
   
       const body = preparedPostQuery;
-          dispatch(queryNewComment(body, postId._id))
-    
-    setCommentForm('')
+        dispatch(queryNewComment(body, postId._id))
+        setCommentForm('')
   }
+
+  // if (!comments?.length) return <div>Comments list is empty</div>;
+
     return (
   <Box sx={{
     display: 'flex',
@@ -41,7 +44,7 @@ const Comments = () => {
     }}
     >
     <Grid>
-      {comments.map((comment) => {
+      {comments?.map((comment) => {
         return <CommentItem key={comment._id} {...comment} />;
       })}
     
@@ -63,7 +66,7 @@ const Comments = () => {
           variant="contained"
           sx={{ mt: 0, mb: 0 }}
           onClick={submitHandler}>
-          Create comment
+          Ваш комментарий
         </Button>
       </Grid>
     </Grid>

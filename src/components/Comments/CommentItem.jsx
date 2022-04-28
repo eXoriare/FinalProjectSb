@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
+import { useParams } from 'react-router-dom';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
@@ -16,6 +16,7 @@ export default function CommentItem({_id}) {
     const comments = useSelector((store) => store.comments)
     const currentComment = comments.find((comment) => comment._id === _id)
   const deleteHandler = () => dispatch(deleteCommentQuery(postId._id, currentComment._id))
+  
   return (
     <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
       <ListItem alignItems="flex-start">

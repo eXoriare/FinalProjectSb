@@ -35,8 +35,6 @@ const ModalInner = ({ children, onClose }) => {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  const postId = useParams()
-
   const closeClickHandler = () => {
     onClose()
   }
@@ -44,6 +42,8 @@ const ModalInner = ({ children, onClose }) => {
   const innerClickHandler = (e) => {
     e.stopPropagation()
   }
+  
+  const postId = useParams()
 
   // eslint-disable-next-line no-unused-vars
   const {post, openModal} = usePostsDetailContext()
@@ -59,7 +59,7 @@ const ModalInner = ({ children, onClose }) => {
       title,
       text,
       image,
-      tags: tags.split(",").map((el) => el.trim()),
+      tags,
     };
 
     const body = preparedPostQuery;
@@ -147,7 +147,7 @@ const ModalInner = ({ children, onClose }) => {
             onClick={submitHandler}
             variant="contained"
             sx={{ mt: 1, mb: 1 }}>
-            Update Post
+            Обновить пост
           </Button>
           </Stack>
           </Paper>

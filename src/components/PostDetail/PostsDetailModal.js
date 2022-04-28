@@ -1,5 +1,4 @@
 import Modal from "../Modal/Modal"
-import PostForm from "../PostForm/PostForm"
 import { usePostsDetailContext } from "./PostDetail"
 
 
@@ -9,14 +8,12 @@ const PostsDetailModal = () => {
     
     return(
         <Modal
-        state={viewModal}
-        onClose={closeModal}
-        >
-        <PostForm
-           onSubmit={submitHandler}
-           {...post}
-           />
-    </Modal>
+            state={viewModal}
+            onClose={closeModal}
+            onSubmit={submitHandler}
+            {...post}
+            >
+        </Modal>
     )
 }
 

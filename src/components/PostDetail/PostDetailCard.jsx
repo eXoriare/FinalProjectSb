@@ -1,12 +1,12 @@
 import * as React from "react";
 import { useNavigate } from "react-router-dom";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
-import { Button, CardContent, Grid, Typography } from "@mui/material";
+import { Box, Button, Grid } from "@mui/material";
 import Avatar from "@mui/material/Avatar";
 import Card from "@mui/material/Card";
 import CardHeader from "@mui/material/CardHeader";
 import CardMedia from "@mui/material/CardMedia";
-import { red } from "@mui/material/colors";
+import { green, red } from "@mui/material/colors";
 import IconButton from "@mui/material/IconButton";
 import { usePostsDetailContext } from "./PostDetail";
 import Comments from "../Comments/Comments"
@@ -22,14 +22,11 @@ const PostDetailCard = () => {
   const date = new Date(post.created_at).toLocaleString()
 
   return (
-		<Grid item direction='column' xs={6}>
-		
+    <Box m={2} p={2}>
     <Card>
       <CardHeader
         avatar={
-          <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
-            {post?.author?.name.slice(0, 1)}
-          </Avatar>
+          <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe"></Avatar>
         }
         action={
           <IconButton aria-label="settings">
@@ -37,43 +34,51 @@ const PostDetailCard = () => {
           </IconButton>
         }
         title={post.title}
-        subheader={date}
+        subheader = {date}
       />
       <CardMedia
         component="img"
-        height="194"
+        height="300"
         image={post.image}
         alt={post.title}
       />
-      <CardContent>
-        <Typography variant="body2" color="text.secondary">
-					{/* {description} */}
-        </Typography>
-      </CardContent>
-        
-        <Button>Add Comment</Button>
-        
-      
-          <Typography paragraph>
-						{post.text}
-          </Typography>
-         
-          <Button type="submit"
+      <Box sx={{
+        mt: 1,
+        ml: 1,
+      }}>
+      <span>{post.text}</span>
+      </Box>
+      <Grid
+        container
+        justifyContent="flex-end"
+        gap
+        m={0}
+        p={1}
+      >
+        <Button type="submit"
               variant="contained"
-              sx={{ mt: 1, mb: 1 }}
+              sx={{ 
+                bgcolor: green[500],
+                mt: 1, 
+                mb: 1 }}
               onClick={() => navigate(-1)} >
-                Go back
+                Назад
           </Button>
         <Button type="submit"
               variant="contained"
-              sx={{ mt: 1, mb: 1 }}
+              sx={{ 
+                bgcolor: green[500],
+                mt: 1, 
+                mb: 1 
+                }}
               onClick={openModal}>
-                Edit
+                Редактировать
          </Button>
-        <hr />
+      </Grid>
+      <hr />
       <Comments />
     </Card>
-		</Grid>
+    </Box>
   );
 };
 

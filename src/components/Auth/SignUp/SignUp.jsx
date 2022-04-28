@@ -9,7 +9,7 @@ import Container from "@mui/material/Container";
 import { Paper } from "@mui/material";
 import { useDispatch } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
-import { signUpQuery } from "../../../redux/actions/regPersonAC";
+import { signUpQuery } from "../../../redux/actions/personAC";
 
 export default function SignUp() {
   const navigate = useNavigate();
@@ -25,11 +25,8 @@ export default function SignUp() {
       signUpQuery({
         email: data.get("email"),
         password: data.get("password"),
-        successCb: () => {
+        cb: () => {
           navigate(from, { replace: true });
-        },
-        errorCb: (message) => {
-          window.alert(message)
         },
       })
     );

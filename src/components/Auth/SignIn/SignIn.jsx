@@ -6,7 +6,7 @@ import Box from "@mui/material/Box";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
-import { Paper } from "@mui/material";
+import { Link, Paper } from "@mui/material";
 import { useDispatch } from "react-redux";
 import { signInQuery } from "../../../redux/actions/personAC";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -92,6 +92,11 @@ export default function SignIn() {
             >
               Войти
             </Button>
+
+            <Link href="/signup" underline="hover">
+              {'ИЛИ ЗАРЕГИСТРИРОВАТЬСЯ'}
+            </Link>
+            
           </Box>
         </Box>
       </Paper>

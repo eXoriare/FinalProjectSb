@@ -1,9 +1,15 @@
 import { useSelector } from "react-redux";
 import { Navigate, useLocation } from "react-router-dom";
 
+const personToken = 'personToken'
+
 export function RequireAuth({ children }) {
   let token = useSelector(store => store.person.token);
-  let location = useLocation();
+  const location = useLocation();
+
+  if (!token) {
+    token = localStorage.getItem(personToken)
+  }
 
 
   if (!token) {
@@ -13,5 +19,6 @@ export function RequireAuth({ children }) {
     // than dropping them off on the home page.
     return <Navigate to="/signin" state={{ from: location }} replace />;
   }
+  
   return children;
 }

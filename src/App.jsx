@@ -13,6 +13,7 @@ import Footer from "./components/Footer/Footer";
 import { RequireAuth } from "./components/Auth/RequireAuth/RequireAuth";
 import SignUp from "./components/Auth/SignUp/SignUp";
 import PostDetail from "./components/PostDetail/PostDetail";
+// import PersonAuth from "./components/Auth/RequireAuth/PersonAuth";
 
 const themeLight = createTheme({
   palette: {
@@ -41,9 +42,13 @@ function App() {
             className="container"
           >
             <Routes>
-              <Route path="/"
-              element={<Main />} 
-              />
+              <Route 
+                path="/"
+                element={
+                  // <PersonAuth>
+                    <Main />
+                  // </PersonAuth>
+              } />
               <Route
                 path="/posts"
                 element={
@@ -68,8 +73,20 @@ function App() {
                   </RequireAuth>
                 }
               />
-              <Route path="/signin" element={<SignIn />} />
-              <Route path="/signup" element={<SignUp />} />
+              <Route 
+                path="/signin" 
+                element={
+                  // <PersonAuth>
+                    <SignIn />
+                  // </PersonAuth>
+                  } />
+              <Route 
+                path="/signup" 
+                  element={
+                  // <PersonAuth>
+                    <SignUp />
+                  // </PersonAuth>
+                  } />
               <Route path="/logout" element={<Main />} />
             </Routes>
           </Container>
