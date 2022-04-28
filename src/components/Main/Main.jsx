@@ -8,7 +8,7 @@ const Main = () => {
 
 	return (
 		<>
-			<Typography textAlign="center" variant="h1">Welcome</Typography>
+			<Typography textAlign="center" variant="h1">Добро пожаловать</Typography>
 			<hr />
 			<CardContent
 					sx={{

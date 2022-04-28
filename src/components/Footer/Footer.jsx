@@ -4,8 +4,8 @@ function Copyright() {
   return (
     <Typography variant="body2" color="text.secondary">
       {"Copyright © "}
-      <Link color="inherit" href="https://mui.com/">
-        Your Website
+      <Link color="inherit" href="http://pm1.narvii.com/7531/c5a07a6fd28673dd35bc2539a9e6377f86e5243cr1-474-374v2_uhq.jpg">
+        Йо вэбсайт
       </Link>{" "}
       {new Date().getFullYear()}
       {"."}
@@ -29,7 +29,7 @@ function Footer() {
     >
       <Container maxWidth="lg">
         <Typography variant="body1">
-          My sticky footer can be found here.
+          Совсем не липкий футер.
         </Typography>
         <Copyright />
       </Container>

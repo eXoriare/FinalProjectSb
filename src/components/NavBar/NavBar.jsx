@@ -209,7 +209,7 @@ const NavBar = () => {
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Действия с аккаунтом">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="https://bipbap.ru/wp-content/uploads/2019/06/01.-kartinki-dlya-ld-640x369.jpg" />
+                <Avatar alt="avatar" src="https://bipbap.ru/wp-content/uploads/2019/06/01.-kartinki-dlya-ld-640x369.jpg" />
               </IconButton>
             </Tooltip>
             <Menu
